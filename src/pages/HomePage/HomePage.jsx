@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { StyledLink } from './HomePage.styled';
+import { StyledLink, MovieList, MovieItem, Image } from './HomePage.styled';
 import * as Api from '../../api/movies-api';
 import PropTypes from 'prop-types';
 
@@ -19,14 +19,19 @@ export const HomePage = () => {
     return (
         <>
          <h1>Trending now</h1>
-            <ul> 
-            {movies.map(({ id, title }) => {
-                return <li key={id}>
-                    <StyledLink to={`/movies/${id}`}>{title}</StyledLink>
-                </li>
+            <MovieList> 
+            {movies.map(({ id, title, release_date, poster_path }) => {
+                return <MovieItem key={id}>
+
+                    <StyledLink to={`/movies/${id}`}>
+                    <Image src={
+                     `https://image.tmdb.org/t/p/w300${poster_path}`}  />
+                        {title}</StyledLink>
+                    <p>{release_date}</p>
+                </MovieItem>
             }
             )}
-            </ul>
+            </MovieList>
         </>
     )
 
