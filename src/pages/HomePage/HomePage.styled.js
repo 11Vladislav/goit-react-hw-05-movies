@@ -19,6 +19,7 @@ export const MovieList = styled.ul`
 `;
 
 export const MovieItem = styled.li`
+  max-width: 250px;
 `;
 
 export const Image = styled.img`
